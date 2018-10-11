@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + './../public/index.html'));
 
 app.get('/', (req, res) => {
-  res.send('WE ARE UP AND RUNNING!');
+  res.send('Up and At Them!');
 });
 
 app.listen(port, () => {

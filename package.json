@@ -41,6 +41,7 @@
     "husky": "^1.1.2",
     "jest": "^23.6.0",
     "lint-staged": "^7.3.0",
+    "mongodb": "^3.1.8",
     "node-sass": "^4.9.3",
     "nodemon": "^1.18.4",
     "prettier": "^1.14.3",
