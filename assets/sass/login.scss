@@ -8,11 +8,12 @@
     width: 20%;
     .login-form {
       padding: 20px;
-      .login-space {
+      .input-row {
         margin: 5px 0;
-      }
-      .form-input {
-        float: right;
+        .input-box {
+          float: right;
+          padding: 0;
+        }
       }
     }
   }

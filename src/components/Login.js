@@ -10,11 +10,11 @@ class Login extends Component {
       <div className="loginContainer">
         <div className="loginBox">
           <form className="form login-form">
-            <div className="login-space">
-              User Name: <input className="form-input" type="text" />
+            <div className="input-row">
+              User Name: <input className="input-box" type="text" />
             </div>
-            <div className="login-space">
-              Password: <input className="form-input" type="text" />
+            <div className="input-row">
+              Password: <input className="input-box" type="text" />
             </div>
             <button className="button button__login">Login</button>
           </form>

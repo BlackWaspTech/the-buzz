@@ -9,7 +9,9 @@ class Login extends Component {
     return (
       <div className="profileContainer">
         <div className="profile">
-          <div className="profileImage">Profile Image</div>
+          <div className="profileImage">
+            <img src="../../assets/images/bw-logo.png" />
+          </div>
           <div className="user-information">User Name</div>
           <div className="user-information">Address</div>
           <div className="user-information">Biography</div>
