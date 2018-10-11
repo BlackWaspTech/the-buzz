@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + './../public/index.html'));
 
 app.get('/', (req, res) => {
   res.send('WE ARE UP AND RUNNING!');
