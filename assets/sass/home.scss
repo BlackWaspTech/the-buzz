@@ -2,18 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  .loginBox {
-    width: 20%;
-    .login-form {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid black;
-      padding: 20px;
-      border-radius: 5px;
-      .form-input {
-        
-      }
-    }
-  }
+  height: 30vw;
+  font-size: 5em;
 }

@@ -1,0 +1,10 @@
+.profileContainer {
+  display: flex;
+  margin: 20px 5%;
+  .profileImage {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+}
