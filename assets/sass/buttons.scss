@@ -1,5 +1,6 @@
 .button {
-  &__login {
+  font-size: 1em;
+  &__login, &__sign-up {
     width: 50%;
     margin: 10px auto 0;
     background-color: green;

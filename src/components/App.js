@@ -4,6 +4,7 @@ import Header from './Header';
 import Home from './Home';
 import Login from './Login';
 import Profile from './Profile';
+import SignUp from './SignUp';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/signup" component={SignUp} />
         </Switch>
       </div>
     );
