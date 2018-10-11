@@ -9,7 +9,7 @@ class Login extends Component {
     return (
       <div className="loginContainer">
         <div className="loginBox">
-          <form className="login-form">
+          <form className="form login-form">
             <div className="login-space">
               User Name: <input className="form-input" type="text" />
             </div>
