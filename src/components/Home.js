@@ -6,21 +6,7 @@ class Home extends Component {
   }
 
   render() {
-    return (
-      <div className="homeContainer">
-        <div className="loginBox">
-          <form className="login-form">
-            <div>
-              User Name: <input className="form-input" type="text" />
-            </div>
-            <div>
-              Password: <input className="form-input" type="text" />
-            </div>
-            <submit className="button button__login">Login</submit>
-          </form>
-        </div>
-      </div>
-    );
+    return <div className="homeContainer">Welcome to The Buzz</div>;
   }
 }
 
