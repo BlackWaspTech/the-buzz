@@ -11,7 +11,11 @@ userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  address: {},
   profileImage: {
+    type: String
+  },
+  biography: {
     type: String
   },
   messages: [

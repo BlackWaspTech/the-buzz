@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const User = require('./user');
+const Message = require('./message');
 
 mongoose.set('debug', true);
 mongoose.Promise = global.Promise;
@@ -12,5 +14,7 @@ mongoose.connect(
   }
 );
 
-module.exports.User = require('./user');
-module.exports.Message = require('./message');
+module.exports = {
+  User,
+  Message
+};
