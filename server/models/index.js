@@ -8,7 +8,7 @@ mongoose.connect(
   {
     keepAlive: true,
     reconnectTries: Number.MAX_VALUE,
-    useMongoClient: true
+    useNewUrlParser: true
   }
 );
 
