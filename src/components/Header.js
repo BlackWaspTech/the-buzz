@@ -13,6 +13,7 @@ class Header extends Component {
         <Link className="nav--logo" to="/">
           The Buzz
         </Link>
+        <Link to="/profile">Profile</Link>
         <div className="nav--right login-sign-up">
           <Link className="color--red" to="/login">
             Login

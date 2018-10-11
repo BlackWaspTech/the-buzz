@@ -16,7 +16,7 @@ class Login extends Component {
             <div className="login-space">
               Password: <input className="form-input" type="text" />
             </div>
-            <submit className="button button__login">Login</submit>
+            <button className="button button__login">Login</button>
           </form>
         </div>
       </div>
