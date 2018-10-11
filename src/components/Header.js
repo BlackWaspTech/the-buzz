@@ -12,7 +12,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props);
     let userLoggedIn;
     if (this.props.user.isLoggedIn === false) {
       // If use is not logged in show Login / Sign up
