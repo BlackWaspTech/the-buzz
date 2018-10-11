@@ -5,7 +5,15 @@ module.exports = {
   entry: './src/index.js',
   devServer: {
     contentBase: path.join(__dirname, '/public'),
-    publicPath: '/dist/'
+    publicPath: '/dist/',
+    port: 3000,
+    historyApiFallback: true,
+    proxy: [
+      {
+        context: ['/api', '/auth'],
+        target: 'http://localhost:3000'
+      }
+    ]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

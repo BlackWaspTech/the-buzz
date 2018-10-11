@@ -8,7 +8,13 @@ class Login extends Component {
   render() {
     return (
       <div className="profileContainer">
-        <div className="profileImage">Profile Image</div>
+        <div className="profile">
+          <div className="profileImage">Profile Image</div>
+          <div className="user-information">User Name</div>
+          <div className="user-information">Address</div>
+          <div className="user-information">Biography</div>
+        </div>
+        <div className="feed">Feed</div>
       </div>
     );
   }
