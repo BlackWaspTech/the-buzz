@@ -1,0 +1,10 @@
+.button {
+  &__login {
+    width: 50%;
+    margin: 10px auto 0;
+    background-color: green;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px 5px;
+  }
+}
