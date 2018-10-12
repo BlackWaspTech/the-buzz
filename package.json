@@ -15,6 +15,7 @@
     "babel-polyfill": "^6.26.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
+    "express-graphql": "^0.6.12",
     "graphql": "^14.0.2",
     "mongoose": "^5.3.2",
     "prop-types": "^15.6.2",
