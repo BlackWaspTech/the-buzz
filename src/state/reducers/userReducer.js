@@ -1,4 +1,4 @@
-import * as types from './actions/actions';
+import * as types from '../actions/actions';
 
 const initState = {
   isLoggedIn: false,

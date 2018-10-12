@@ -3,6 +3,34 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/dist/'
+  },
+  resolve: { extensions: ['*', '.js', '.jsx'] },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
+      },
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto'
+      }
+    ]
+  },
   devServer: {
     contentBase: path.join(__dirname, '/public'),
     publicPath: '/dist/',
@@ -11,39 +39,7 @@ module.exports = {
     proxy: [
       {
         context: ['/api', '/auth'],
-        target: 'http://localhost:3000'
-      }
-    ]
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/env', '@babel/react']
-          }
-        }
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader' // creates style nodes from JS strings
-          },
-          {
-            loader: 'css-loader' // translates CSS into CommonJS
-          },
-          {
-            loader: 'sass-loader' // compiles Sass to CSS
-          }
-        ]
+        target: 'http://localhost:8080'
       }
     ]
   }
