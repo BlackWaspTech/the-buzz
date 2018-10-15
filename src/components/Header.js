@@ -16,7 +16,7 @@ class Header extends Component {
     if (this.props.user.isLoggedIn === false) {
       // If use is not logged in show Login / Sign up
       userLoggedIn = (
-        <div className="nav--right login-sign-up">
+        <div className="nav--right">
           <Link className="color--red" to="/login">
             Login
           </Link>
@@ -31,6 +31,8 @@ class Header extends Component {
       userLoggedIn = (
         <div className="nav--right">
           <Link to="/profile">Profile</Link>
+          <div>&nbsp;/&nbsp;</div>
+          <Link to="/logout">Logout</Link>
         </div>
       );
     }
