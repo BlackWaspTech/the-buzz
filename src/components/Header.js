@@ -9,6 +9,9 @@ const mapStateToProps = store => ({
 class Header extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      name: ''
+    };
   }
 
   render() {
@@ -39,7 +42,7 @@ class Header extends Component {
 
     return (
       <header className="nav-container">
-        <div className="nav--left">Name</div>
+        <div className="nav--left">{this.props.user.userName}</div>
         <Link className="nav--logo" to="/">
           The Buzz
         </Link>
