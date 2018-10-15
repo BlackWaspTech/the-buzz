@@ -1,6 +1,6 @@
 const UpdateUser = 'UpdateUser';
 
-const updateUser = information => ({ types: UpdateUser, information });
+const updateUser = information => ({ type: UpdateUser, information });
 
 module.exports = {
   UpdateUser,
