@@ -6,6 +6,7 @@ import Home from './Home';
 import Login from './Login';
 import Profile from './Profile';
 import SignUp from './SignUp';
+import Logout from './Logout';
 import { withCookies } from 'react-cookie';
 
 const mapStateToProps = store => ({
@@ -53,6 +54,17 @@ class App extends Component {
                 <Redirect to="/profile" />
               ) : (
                 <SignUp cookies={this.props.cookies} />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/logout"
+            render={() =>
+              this.props.user.isLoggedIn ? (
+                <Logout cookies={this.props.cookies} />
+              ) : (
+                <Redirect to="/login" />
               )
             }
           />

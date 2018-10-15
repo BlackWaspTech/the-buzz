@@ -25,6 +25,13 @@ const userReducer = (state = initState, action) => {
       newUserState.userAddress = action.newUserInfo.data.addUser.address;
       newUserState.userBiography = action.newUserInfo.data.addUser.biography;
       return newUserState;
+    case types.Logout:
+      let logoutState = Object.assign({}, state);
+      logoutState.isLoggedIn = false;
+      logoutState.userName = '';
+      logoutState.userAddress = '';
+      logoutState.userBiography = '';
+      return logoutState;
     default:
       return state;
   }

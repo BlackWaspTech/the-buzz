@@ -23,11 +23,8 @@
       }
     }
     &--right {
+      display: flex;
+      justify-content: space-between;
     }
-  }
-
-  .login-sign-up {
-    display: flex;
-    justify-content: space-between;
   }
 }
