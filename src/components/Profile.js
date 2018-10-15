@@ -8,12 +8,6 @@ const mapStateToProps = store => ({
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      profileImage: 'Profile Image Text Replace',
-      userName: '',
-      userAddress: '',
-      userBiography: ''
-    };
   }
 
   render() {

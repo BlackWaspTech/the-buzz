@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as queries from '../queries/queries';
 import { connect } from 'react-redux';
-import { query } from '../utilities/wasp-graphql/index';
+import { query } from 'wasp-graphql';
 import { API } from './constants/constants';
 import * as types from '../state/actions/actions';
 import store from '../state/store';
@@ -43,19 +43,16 @@ class Login extends Component {
   }
 
   render() {
-    if (this.props.user.isLoggedIn) {
-      console.log('props logged in ');
-    }
     return (
       <div className="loginContainer">
         <div className="loginBox">
           <form className="form login-form">
             <div className="login-space">
-              User Name:{' '}
+              User Name:
               <input id="userName" className="form-input" type="text" />
             </div>
             <div className="login-space">
-              Password:{' '}
+              Password:
               <input id="userPass" className="form-input" type="text" />
             </div>
             <button

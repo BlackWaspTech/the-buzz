@@ -40,7 +40,17 @@ class App extends Component {
               )
             }
           />
-          <Route exact path="/signup" component={SignUp} />
+          <Route
+            exact
+            path="/signup"
+            render={() =>
+              this.props.user.isLoggedIn ? (
+                <Redirect to="/profile" />
+              ) : (
+                <SignUp />
+              )
+            }
+          />
         </Switch>
       </div>
     );
