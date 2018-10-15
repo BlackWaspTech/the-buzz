@@ -1,13 +1,12 @@
-let fields = `{
-	user(id: "5bc10e83ad56ff9e9ae8ad7d") {
-	  id
+let findUser = `query findUser($username: String!){
+  user(userName: $username) {
     username
-    password
     biography
+    password
     address
-	}
+  }
 }`;
 
 module.exports = {
-  fields
+  findUser
 };

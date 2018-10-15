@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { query } from '../utilities/wasp-graphql/index';
 import { connect } from 'react-redux';
-import * as queries from '../queries/queries';
 
 const mapStateToProps = store => ({
   user: store.user
 });
-
-let API = 'http://localhost:8080/graphql';
 
 class Login extends Component {
   constructor(props) {
@@ -20,32 +16,19 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    query(API, { fields: queries.fields })
-      .then(res => {
-        return res.json();
-      })
-      .then(resp => {
-        this.setState({
-          userName: resp.data.user.username,
-          userAddress: resp.data.user.address,
-          userBiography: resp.data.user.biography
-        });
-      });
-  }
   render() {
     return (
       <div className="profileContainer">
         <div className="profile">
-          <div className="profileImage">{this.state.profileImage}</div>
+          <div className="profileImage">Images to come</div>
           <div className="user-information">
-            User Name: {this.state.userName}
+            User Name: {this.props.user.userName}
           </div>
           <div className="user-information">
-            Address: {this.state.userAddress}
+            Address: {this.props.user.userAddress}
           </div>
           <div className="user-information">
-            Biography: {this.state.userBiography}
+            Biography: {this.props.user.userBiography}
           </div>
         </div>
         <div className="feed">Feed</div>

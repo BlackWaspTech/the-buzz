@@ -41,7 +41,6 @@ class Header extends Component {
         <Link className="nav--logo" to="/">
           The Buzz
         </Link>
-        <Link to="/profile">Profile</Link>
         {userLoggedIn}
       </header>
     );
