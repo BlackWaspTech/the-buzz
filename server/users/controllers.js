@@ -26,7 +26,10 @@ const createUser = (req, res) => {
 const getAllUsers = (_, res) => {
   Users.find({}, (err, document) => {
     if (err || !document) return res.status(400).end({ err, document });
-    else return res.status(200).send(document);
+    else {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      return res.status(200).send(document);
+    }
   });
 };
 
