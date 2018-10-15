@@ -6,6 +6,7 @@ import Home from './Home';
 import Login from './Login';
 import Profile from './Profile';
 import SignUp from './SignUp';
+import { withCookies } from 'react-cookie';
 
 const mapStateToProps = store => ({
   user: store.user
@@ -17,7 +18,11 @@ class App extends Component {
       <div>
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={() => <Home cookies={this.props.cookies} />}
+          />
           <Route
             exact
             path="/login"
@@ -25,7 +30,7 @@ class App extends Component {
               this.props.user.isLoggedIn ? (
                 <Redirect to="/profile" />
               ) : (
-                <Login />
+                <Login cookies={this.props.cookies} />
               )
             }
           />
@@ -34,7 +39,7 @@ class App extends Component {
             path="/profile"
             render={() =>
               this.props.user.isLoggedIn ? (
-                <Profile />
+                <Profile cookies={this.props.cookies} />
               ) : (
                 <Redirect to="/login" />
               )
@@ -47,7 +52,7 @@ class App extends Component {
               this.props.user.isLoggedIn ? (
                 <Redirect to="/profile" />
               ) : (
-                <SignUp />
+                <SignUp cookies={this.props.cookies} />
               )
             }
           />
@@ -57,4 +62,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withCookies(withRouter(connect(mapStateToProps)(App)));
