@@ -1,42 +1,52 @@
 import React, { Component } from 'react';
 import { query } from '../utilities/wasp-graphql/index';
-let fields = `{
-  users {
-    userName
-  }
-}`;
-let url = 'http://localhost:8080/api/users/';
+import { connect } from 'react-redux';
+import * as queries from '../queries/queries';
+
+const mapStateToProps = store => ({
+  user: store.user
+});
+
+let API = 'http://localhost:8080/graphql';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      profileImage: 'Profile Image Text Replace',
+      userName: '',
+      userAddress: '',
+      userBiography: ''
     };
   }
 
-  getData() {
-    let data = query(url, JSON.stringify({ fields: fields, mode: 'no-cors' }));
-    data.then(function(res) {
-      console.log('then');
-    });
+  componentDidMount() {
+    query(API, { fields: queries.fields })
+      .then(res => {
+        return res.json();
+      })
+      .then(resp => {
+        this.setState({
+          userName: resp.data.user.username,
+          userAddress: resp.data.user.address,
+          userBiography: resp.data.user.biography
+        });
+      });
   }
-
   render() {
-    let test = fetch('http://localhost:8080/api/users/', {
-      method: 'GET'
-    }).then(res => {
-      console.log(res);
-      console.log('here');
-    });
-    console.log(test);
     return (
       <div className="profileContainer">
         <div className="profile">
-          <div className="profileImage">{this.state.data}</div>
-          <div className="user-information">User Name</div>
-          <div className="user-information">Address</div>
-          <div className="user-information">Biography</div>
+          <div className="profileImage">{this.state.profileImage}</div>
+          <div className="user-information">
+            User Name: {this.state.userName}
+          </div>
+          <div className="user-information">
+            Address: {this.state.userAddress}
+          </div>
+          <div className="user-information">
+            Biography: {this.state.userBiography}
+          </div>
         </div>
         <div className="feed">Feed</div>
       </div>
@@ -44,4 +54,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect(mapStateToProps)(Login);

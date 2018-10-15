@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+const graphqlHTTP = require('express-graphql');
+const schema = require('./schema/schema');
+
 const app = express();
+const cors = require('cors');
 
 // Configure Database
 mongoose.set('debug', true);
@@ -22,13 +26,15 @@ mongoose.connect(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-});
+app.use(cors());
+
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    graphiql: true
+  })
+);
 
 // Configure routes
 app.use('/auth', require('./auth/routes'));
