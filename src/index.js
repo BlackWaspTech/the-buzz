@@ -9,11 +9,15 @@ import App from './components/App';
 import store from './state/store';
 import './assets/sass/app.scss';
 
+import { CookiesProvider } from 'react-cookie';
+
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
+  <CookiesProvider>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </CookiesProvider>,
   document.getElementById('content')
 );

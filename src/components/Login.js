@@ -6,8 +6,9 @@ import { API } from './constants/constants';
 import * as types from '../state/actions/actions';
 import store from '../state/store';
 
-const mapStateToProps = store => ({
-  user: store.user
+const mapStateToProps = (store, ownProps) => ({
+  user: store.user,
+  cookies: ownProps.cookies
 });
 
 class Login extends Component {
@@ -37,9 +38,34 @@ class Login extends Component {
       })
       .then(resp => {
         if (resp.data.user.password === PW) {
+          this.props.cookies.set('loggedIn', resp.data.user.username, {
+            path: '/'
+          });
           store.dispatch(types.updateUser(resp));
         }
       });
+  }
+
+  componentDidMount() {
+    if (this.props.cookies.cookies.loggedIn) {
+      const vars = {
+        username: this.props.cookies.cookies.loggedIn
+      };
+      const init = {
+        body: JSON.stringify({
+          query: queries.findUser,
+          variables: vars
+        })
+      };
+
+      query(API, init)
+        .then(res => {
+          return res.json();
+        })
+        .then(resp => {
+          store.dispatch(types.updateUser(resp));
+        });
+    }
   }
 
   render() {
