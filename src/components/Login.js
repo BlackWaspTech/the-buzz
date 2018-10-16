@@ -41,6 +41,9 @@ class Login extends Component {
           this.props.cookies.set('loggedIn', resp.data.user.username, {
             path: '/'
           });
+          this.props.cookies.set('userId', resp.data.user.id, {
+            path: '/'
+          });
           store.dispatch(types.updateUser(resp));
         }
       });

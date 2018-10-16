@@ -33,6 +33,7 @@ const userReducer = (state = initState, action) => {
       logoutState.userName = '';
       logoutState.userAddress = '';
       logoutState.userBiography = '';
+      logoutState.messages = [];
       return logoutState;
     case types.UpdateUserMessages:
       let updateUserMessageState = Object.assign({}, state);
@@ -42,6 +43,10 @@ const userReducer = (state = initState, action) => {
           <div key={i}>{userMessages[i].message}</div>
         );
       }
+    case types.AddMessage:
+      let addMessageState = Object.assign({}, state);
+      addMessageState.messages.push(action.message.data.addMessage.message);
+      return addMessageState;
     default:
       return state;
   }
