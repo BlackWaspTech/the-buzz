@@ -83,7 +83,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props.user.messages);
     return (
       <div className="profileContainer">
         <div className="profile">
