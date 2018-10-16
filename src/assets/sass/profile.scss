@@ -12,8 +12,30 @@
       border-radius: 5px;
     }
   }
-  .feed {
+  .feedContainer {
     width: 100%;
     margin-left: 20px;
+    .feed {
+      height: 100%;
+      border: 1px solid black;
+    }
+    .buzzMessageContainer {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.2em;
+      input {
+        width: 85%;
+        height: 30px;
+        font-size: 1.2em;
+      }
+      .button {
+        border-radius: 5px;
+        background-color: green;
+        padding: 5px 10px;
+      }
+    }
   }
+
 }

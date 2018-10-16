@@ -59,15 +59,16 @@ class Login extends Component {
             Biography: {this.props.user.userBiography}
           </div>
         </div>
-        <div className="feed">
+        <div className="feedContainer">
           <div id="feed" className="feed" />
           <div>
-            <form>
+            <form className="buzzMessageContainer">
               Message: <input id="buzzMessage" type="text" />
               <button
                 onClick={e => {
                   this.submitBuzz(e);
                 }}
+                className="button"
               >
                 Submit
               </button>
