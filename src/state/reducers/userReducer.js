@@ -45,7 +45,9 @@ const userReducer = (state = initState, action) => {
       }
     case types.AddMessage:
       let addMessageState = Object.assign({}, state);
-      addMessageState.messages.push(action.message.data.addMessage.message);
+      addMessageState.messages.push(
+        <div>{action.message.data.addMessage.message}</div>
+      );
       return addMessageState;
     default:
       return state;
