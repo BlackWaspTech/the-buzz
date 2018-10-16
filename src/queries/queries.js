@@ -16,7 +16,16 @@ let addUser = `mutation addUser($username: String!, $password: String!, $address
   }
 }`;
 
+let findUserMessages = `query($username: String!) {
+  user(userName: $username){
+    messages{
+      message
+    }
+  }
+}`;
+
 module.exports = {
   findUser,
-  addUser
+  addUser,
+  findUserMessages
 };

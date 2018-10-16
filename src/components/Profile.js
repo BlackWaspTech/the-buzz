@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as queries from '../queries/queries';
-import { query } from 'wasp-graphql';
+import { query, mutation } from 'wasp-graphql';
 import { API } from './constants/constants';
 import * as types from '../state/actions/actions';
 import store from '../state/store';
@@ -16,19 +16,41 @@ class Login extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    if (this.props.cookies.cookies.loggedIn) {
+      const vars = {
+        username: this.props.cookies.cookies.loggedIn
+      };
+      const getBuzzMessages = {
+        body: JSON.stringify({
+          query: queries.findUserMessages,
+          variables: vars
+        })
+      };
+
+      query(API, getBuzzMessages)
+        .then(res => {
+          return res.json();
+        })
+        .then(resp => {
+          store.dispatch(types.updateUserMessages(resp));
+        });
+    }
+  }
+
   componentDidMount() {
     if (this.props.cookies.cookies.loggedIn) {
       const vars = {
         username: this.props.cookies.cookies.loggedIn
       };
-      const init = {
+      const getUserInfo = {
         body: JSON.stringify({
           query: queries.findUser,
           variables: vars
         })
       };
 
-      query(API, init)
+      query(API, getUserInfo)
         .then(res => {
           return res.json();
         })
@@ -36,6 +58,11 @@ class Login extends Component {
           store.dispatch(types.updateUser(resp));
         });
     }
+  }
+
+  submitBuzz(e) {
+    e.preventDefault();
+    let message = document.getElementById('buzzMessage').value;
   }
 
   render() {
@@ -53,7 +80,24 @@ class Login extends Component {
             Biography: {this.props.user.userBiography}
           </div>
         </div>
-        <div className="feed">Feed</div>
+        <div className="feedContainer">
+          <div id="feed" className="feed">
+            {this.props.user.messages}
+          </div>
+          <div>
+            <form className="buzzMessageContainer">
+              Message: <input id="buzzMessage" type="text" />
+              <button
+                onClick={e => {
+                  this.submitBuzz(e);
+                }}
+                className="button"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
