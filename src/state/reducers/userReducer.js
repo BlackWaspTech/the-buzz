@@ -37,17 +37,30 @@ const userReducer = (state = initState, action) => {
       return logoutState;
     case types.UpdateUserMessages:
       let updateUserMessageState = Object.assign({}, state);
-      let userMessages = action.updateMessages.data.user.messages;
-      for (let i = 0; i < userMessages.length; i++) {
-        updateUserMessageState.messages.push(
-          <div key={i}>{userMessages[i].message}</div>
-        );
+      if (action.updateMessages.data) {
+        let userMessages = action.updateMessages.data.user.messages;
+        for (let i = 0; i < userMessages.length; i++) {
+          updateUserMessageState.messages.push(
+            <div className="feed__message" key={i}>
+              <div>{userMessages[i].user.username}:</div>{' '}
+              <div>{userMessages[i].message}</div>
+            </div>
+          );
+        }
       }
     case types.AddMessage:
       let addMessageState = Object.assign({}, state);
-      addMessageState.messages.push(
-        <div>{action.message.data.addMessage.message}</div>
-      );
+      if (action.message) {
+        addMessageState.messages.push(
+          <div
+            className="feed__message"
+            key={action.message.data.addMessage.id}
+          >
+            <div>{action.message.data.addMessage.user.username}</div>
+            <div>{action.message.data.addMessage.message}</div>
+          </div>
+        );
+      }
       return addMessageState;
     default:
       return state;

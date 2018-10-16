@@ -14,6 +14,10 @@ const mapStateToProps = (store, ownProps) => ({
 class Login extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      allUsers: []
+    };
   }
 
   componentWillMount() {
@@ -35,6 +39,7 @@ class Login extends Component {
         .then(resp => {
           store.dispatch(types.updateUserMessages(resp));
         });
+      this.getAllUsers();
     }
   }
 
@@ -62,6 +67,7 @@ class Login extends Component {
 
   submitBuzz(e) {
     e.preventDefault();
+    console.log('running?');
     let message = document.getElementById('buzzMessage').value;
     let addMessageVars = {
       user: this.props.cookies.cookies.userId,
@@ -79,6 +85,32 @@ class Login extends Component {
       })
       .then(resp => {
         store.dispatch(types.addMessage(resp));
+        document.getElementById('buzzMessage').value = '';
+      });
+  }
+
+  getAllUsers() {
+    query(API, queries.getAllUsers)
+      .then(res => {
+        return res.json();
+      })
+      .then(resp => {
+        console.log();
+        for (let i = 0; i < resp.data.allUsers.length; i++) {
+          if (
+            this.props.cookies.cookies.loggedIn !=
+            resp.data.allUsers[i].username
+          ) {
+            this.setState(prevState => ({
+              allUsers: [
+                ...prevState.allUsers,
+                <div key={resp.data.allUsers[i].id} className="allUsers">
+                  {resp.data.allUsers[i].username}
+                </div>
+              ]
+            }));
+          }
+        }
       });
   }
 
@@ -114,6 +146,10 @@ class Login extends Component {
               </button>
             </form>
           </div>
+        </div>
+        <div className="sideBarContainer">
+          <div className="sideBarContainer__header">Other Users</div>
+          {this.state.allUsers}
         </div>
       </div>
     );
