@@ -2,6 +2,7 @@ const UpdateUser = 'UpdateUser';
 const NewUser = 'NewUser';
 const Logout = 'Logout';
 const UpdateUserMessages = 'UpdateUserMessages';
+const AddMessage = 'AddMessage';
 
 const updateUser = updateInfo => ({ type: UpdateUser, updateInfo });
 const newUser = newUserInfo => ({ type: NewUser, newUserInfo });
@@ -10,6 +11,7 @@ const updateUserMessages = updateMessages => ({
   type: UpdateUserMessages,
   updateMessages
 });
+const addMessage = message => ({ type: AddMessage, message });
 
 module.exports = {
   UpdateUser,
@@ -19,5 +21,7 @@ module.exports = {
   Logout,
   logout,
   UpdateUserMessages,
-  updateUserMessages
+  updateUserMessages,
+  AddMessage,
+  addMessage
 };

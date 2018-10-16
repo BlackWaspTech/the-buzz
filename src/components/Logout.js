@@ -9,6 +9,7 @@ class Logout extends Component {
 
   componentDidMount() {
     this.props.cookies.remove('loggedIn', { path: '/' });
+    this.props.cookies.remove('userId', { path: '/' });
     store.dispatch(types.logout());
   }
 

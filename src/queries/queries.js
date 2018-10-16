@@ -1,5 +1,6 @@
 let findUser = `query findUser($username: String!){
   user(userName: $username) {
+    id
     username
     biography
     password
@@ -16,6 +17,12 @@ let addUser = `mutation addUser($username: String!, $password: String!, $address
   }
 }`;
 
+let addMessage = `mutation addMessage($user: String!, $message: String!){
+  addMessage(user: $user, message: $message) {
+    message
+  }
+}`;
+
 let findUserMessages = `query($username: String!) {
   user(userName: $username){
     messages{
@@ -27,5 +34,6 @@ let findUserMessages = `query($username: String!) {
 module.exports = {
   findUser,
   addUser,
-  findUserMessages
+  findUserMessages,
+  addMessage
 };

@@ -63,6 +63,23 @@ class Login extends Component {
   submitBuzz(e) {
     e.preventDefault();
     let message = document.getElementById('buzzMessage').value;
+    let addMessageVars = {
+      user: this.props.cookies.cookies.userId,
+      message: message
+    };
+    const addMessageBody = {
+      body: JSON.stringify({
+        query: queries.addMessage,
+        variables: addMessageVars
+      })
+    };
+    mutation(API, addMessageBody)
+      .then(res => {
+        return res.json();
+      })
+      .then(resp => {
+        store.dispatch(types.addMessage(resp));
+      });
   }
 
   render() {
