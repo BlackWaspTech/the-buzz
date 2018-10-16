@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import userReducer from './userReducer';
-import { waspGraphqlReducer } from '../../utilities/redux-wasp/index';
+import { waspGraphqlReducer } from 'redux-wasp';
 
 const reducers = combineReducers({
   user: userReducer,
