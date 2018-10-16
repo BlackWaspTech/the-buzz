@@ -1,4 +1,5 @@
 import * as types from '../actions/actions';
+import React from 'react';
 
 const initState = {
   isLoggedIn: false,
@@ -6,7 +7,8 @@ const initState = {
   userAddress: '',
   userBiography: '',
   age: null,
-  profileImage: ''
+  profileImage: '',
+  messages: []
 };
 
 const userReducer = (state = initState, action) => {
@@ -32,6 +34,14 @@ const userReducer = (state = initState, action) => {
       logoutState.userAddress = '';
       logoutState.userBiography = '';
       return logoutState;
+    case types.UpdateUserMessages:
+      let updateUserMessageState = Object.assign({}, state);
+      let userMessages = action.updateMessages.data.user.messages;
+      for (let i = 0; i < userMessages.length; i++) {
+        updateUserMessageState.messages.push(
+          <div key={i}>{userMessages[i].message}</div>
+        );
+      }
     default:
       return state;
   }

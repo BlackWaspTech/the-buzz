@@ -16,19 +16,41 @@ class Login extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    if (this.props.cookies.cookies.loggedIn) {
+      const vars = {
+        username: this.props.cookies.cookies.loggedIn
+      };
+      const getBuzzMessages = {
+        body: JSON.stringify({
+          query: queries.findUserMessages,
+          variables: vars
+        })
+      };
+
+      query(API, getBuzzMessages)
+        .then(res => {
+          return res.json();
+        })
+        .then(resp => {
+          store.dispatch(types.updateUserMessages(resp));
+        });
+    }
+  }
+
   componentDidMount() {
     if (this.props.cookies.cookies.loggedIn) {
       const vars = {
         username: this.props.cookies.cookies.loggedIn
       };
-      const init = {
+      const getUserInfo = {
         body: JSON.stringify({
           query: queries.findUser,
           variables: vars
         })
       };
 
-      query(API, init)
+      query(API, getUserInfo)
         .then(res => {
           return res.json();
         })
@@ -41,7 +63,6 @@ class Login extends Component {
   submitBuzz(e) {
     e.preventDefault();
     let message = document.getElementById('buzzMessage').value;
-    console.log(message);
   }
 
   render() {
@@ -60,7 +81,9 @@ class Login extends Component {
           </div>
         </div>
         <div className="feedContainer">
-          <div id="feed" className="feed" />
+          <div id="feed" className="feed">
+            {this.props.user.messages}
+          </div>
           <div>
             <form className="buzzMessageContainer">
               Message: <input id="buzzMessage" type="text" />
