@@ -3,13 +3,13 @@ const User = require('../users/model');
 
 const messageSchema = new mongoose.Schema(
   {
-    text: {
+    message: {
       type: String,
       required: true,
       maxLength: 160
     },
     userId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: 'User',
       required: true
     }

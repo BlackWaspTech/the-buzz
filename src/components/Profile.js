@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as queries from '../queries/queries';
-import { query } from 'wasp-graphql';
+import { query, mutation } from 'wasp-graphql';
 import { API } from './constants/constants';
 import * as types from '../state/actions/actions';
 import store from '../state/store';
@@ -38,6 +38,12 @@ class Login extends Component {
     }
   }
 
+  submitBuzz(e) {
+    e.preventDefault();
+    let message = document.getElementById('buzzMessage').value;
+    console.log(message);
+  }
+
   render() {
     return (
       <div className="profileContainer">
@@ -53,7 +59,21 @@ class Login extends Component {
             Biography: {this.props.user.userBiography}
           </div>
         </div>
-        <div className="feed">Feed</div>
+        <div className="feed">
+          <div id="feed" className="feed" />
+          <div>
+            <form>
+              Message: <input id="buzzMessage" type="text" />
+              <button
+                onClick={e => {
+                  this.submitBuzz(e);
+                }}
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

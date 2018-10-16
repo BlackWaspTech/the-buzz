@@ -42,7 +42,9 @@ class Header extends Component {
 
     return (
       <header className="nav-container">
-        <div className="nav--left">{this.props.user.userName}</div>
+        <div className="nav--left">
+          <Link to="/profile">{this.props.user.userName}</Link>
+        </div>
         <Link className="nav--logo" to="/">
           The Buzz
         </Link>
