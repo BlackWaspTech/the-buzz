@@ -28,6 +28,7 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "redux-wasp": "^0.2.1",
     "wasp-graphql": "^0.2.0",
     "webpack": "^4.20.2",
     "whatwg-fetch": "^3.0.0"
