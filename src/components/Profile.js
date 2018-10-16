@@ -63,9 +63,11 @@ class Login extends Component {
   submitBuzz(e) {
     e.preventDefault();
     let message = document.getElementById('buzzMessage').value;
+    console.log(message);
   }
 
   render() {
+    console.log(this.props.user.messages);
     return (
       <div className="profileContainer">
         <div className="profile">
