@@ -40,6 +40,13 @@ class SignUp extends Component {
         return res.json();
       })
       .then(resp => {
+        console.log(resp);
+        this.props.cookies.set('loggedIn', resp.data.addUser.username, {
+          path: '/'
+        });
+        this.props.cookies.set('userId', resp.data.addUser.id, {
+          path: '/'
+        });
         store.dispatch(types.newUser(resp));
       });
   }

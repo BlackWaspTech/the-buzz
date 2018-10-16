@@ -61,6 +61,12 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         return Message.findById(args.id);
       }
+    },
+    allUsers: {
+      type: new GraphQLList(UserType),
+      resolve(parent, args) {
+        return User.find();
+      }
     }
   }
 });

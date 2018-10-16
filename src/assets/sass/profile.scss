@@ -13,11 +13,19 @@
     }
   }
   .feedContainer {
-    width: 100%;
-    margin-left: 20px;
+    width: 30%;
+    margin: 0 auto;
     .feed {
+      // border: 1px solid black;
       height: 100%;
-      border: 1px solid black;
+      // overflow: scroll;
+      .feed__message {
+        padding: 5px 0;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2em;
+      }
     }
     .buzzMessageContainer {
       height: 50px;
@@ -37,5 +45,16 @@
       }
     }
   }
-
+  .sideBarContainer {
+    &__header {
+      font-size: 1.4em;
+      text-decoration: underline;
+      padding-bottom: 5px;
+    }
+    .allUsers {
+      font-size: 1.2em;
+      text-align: center;
+      padding: 5px 0;
+    }
+  }
 }

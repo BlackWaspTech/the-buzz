@@ -45,6 +45,9 @@ class Login extends Component {
             path: '/'
           });
           store.dispatch(types.updateUser(resp));
+          store.dispatch(
+            types.updateUserMessages(this.props.cookies.cookies.userId)
+          );
         }
       });
   }
