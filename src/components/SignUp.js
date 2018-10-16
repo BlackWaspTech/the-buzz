@@ -40,7 +40,6 @@ class SignUp extends Component {
         return res.json();
       })
       .then(resp => {
-        console.log(resp);
         this.props.cookies.set('loggedIn', resp.data.addUser.username, {
           path: '/'
         });
